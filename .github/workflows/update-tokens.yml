@@ -4,6 +4,10 @@ on:
   repository_dispatch:
     types: update-tokens
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,7 +33,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create PR 
+      - name: Create PR
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: "style: Update design tokens"
